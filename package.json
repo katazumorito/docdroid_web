@@ -1,0 +1,17 @@
+{
+  "name": "com.docdroid.www",
+  "version": "1.0.0",
+  "displayName": "Docdroid",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova-android": "~7.1.4",
+    "i": "^0.3.6",
+    "npm": "^6.9.0",
+    "sweetalert2": "^8.7.0",
+    "tempusdominus-bootstrap-4": "^5.1.2"
+  }
+}
