@@ -30,6 +30,9 @@
 			<link rel="stylesheet" href="css/owl.carousel.css">			
 			<!-- <link rel="stylesheet" href="css/jquery-ui.css">			 -->
 			<link rel="stylesheet" href="css/main.css">
+			<!-- my datatables -->
+			<link rel="stylesheet" type="text/css" href="vendor/DataTables/datatables.min.css"/>
+			<!-- end of datatables -->
 			<link rel="stylesheet" type="text/css" href="vendor/sweetalert2/dist/sweetalert2.css">
 		</head>
 		<body>	
@@ -52,7 +55,7 @@
 			      <div id="logo">
 			        <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
 			      </div>
-			      <nav id="nav-menu-container">
+			       <nav id="nav-menu-container">
 			        <ul class="nav-menu">
 					  <li><a href="patient-landing-page.html">Home</a></li>
 			          <li><a href="#" id=""  onclick="my_appointments()">My Appointments</a></li>
@@ -69,116 +72,43 @@
 		  </header><!-- #header -->
 
 			<!-- start banner Area -->
+
 			<section class="banner-area relative" id="home">
 				<div class="overlay overlay-bg"></div>	
 				<div class="container">
 					<div class="row fullscreen d-flex align-items-center justify-content-center">
-						<div class="banner-content col-lg-8 col-md-12">
-							<h1>
-								We Care for Your Health
-								Every Moment		
-							</h1>
-							<p class="pt-10 pb-10 text-white">
-								Some description.
-							</p>
-							<!-- <a href="#" class="primary-btn text-uppercase">Get Started</a> -->
+						<div class="banner-content col-lg-12 col-md-12">
+							<br>
+							<h1>My Appointments</h1>
 						</div>										
 					</div>
 				</div>					
 			</section>
 			<!-- End banner Area -->
+			<div class="mt-5 mb-5">
+			<div class="container">
+				<table id="list_of_my_appointments" class="table table-dark table-striped table-bordered nowrap" style="width:100%;">
+									<thead>
+											<tr>
+												<th>Queue Number</th>
+												<th>Name</th>
+												<th>Contact Info</th>
+												<th>Email</th>
+												<th>Appointment Date</th>
+											    <th>Date Filed</th>
+												<th>Status</th>
+												<th>Message</th>
+												<th>Controls</th>
+											</tr>
+									</thead>
+							</table>
+			</div>
+			</div>
 
-			<!-- Start appointment Area -->
-			<section class="appointment-area">			
-				<div class="container">
-					<div class="row justify-content-between align-items-center pb-120 appointment-wrap">
-						<div class="col-lg-4 col-md-4 appointment-left">
-							<h1>
-								Servicing Hours
-							</h1>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.
-							</p>
-							<ul class="time-list">
-								<li class="d-flex justify-content-between">
-									<span>Mondays-Fridays</span>
-									<span>07.00 pm - 10.00 pm</span>
-								</li>
-								<li class="d-flex justify-content-between">
-									<span>Saturdays & Holidays</span>
-									<span>10.00 am - 8.00 pm</span>
-								</li>
-								<li class="d-flex justify-content-between">
-									<span>Sundays</span>
-									<span>01.00 pm - 06.00 pm</span>
-								</li>																
-							</ul>
-						</div>
-						<div class="col-lg-7 col-md-8 appointment-right pt-60 pb-60" id="scrollHere">
-							<form class="form-wrap" action="#" method="" id="appointment-form">
-								<h3 class="pb-20 text-center mb-30">Book an Appointment</h3>		
-								<div class="row">
-									<div class="col-sm-4">
-										<input type="text" class="form-control" name="bLname" id="bLname" placeholder="Patient's Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Patient\'s Last Name'" required>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" name="bFname" id="bFname" placeholder="Patient's First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Patient\'s First Name'" required>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" class="form-control" name="bMname" id="bMname" placeholder="Patient's Middle Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Patient\'s Middle Name'" required>
-									</div>
-								</div>
-								
-								<input type="text" pattern=".{11,11}" class="form-control" name="phone" id="phone" placeholder="ex. 09123456789 " onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex. 09123456789'" required>
-								<input type="email" class="form-control" name="email" id="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" required>
-								<!-- <input id="datepicker1" name="dop" class="dates form-control"  placeholder="Date of Birth" type="text">    -->
-								<!-- <div class="form-select" id="service-select">
-									<select>
-										<option data-display="">Disease Type</option>
-										<option value="1">Type One</option>
-										<option value="2">Type Two</option>
-										<option value="3">Type Three</option>
-										<option value="4">Type Four</option>
-									</select>
-								</div>	 -->
-								<input id="datepicker2" class="dates form-control"  placeholder="Appointment Date" type="text" readonly required>  
-								<textarea name="messege" id="message" max="255" class="" rows="5" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"></textarea> 
-								<button type="submit" class="primary-btn text-uppercase" id="confirm-booking">Confirm Booking</button>
-							</form>
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End appointment Area -->
 
-			  <section class="team-area ">
-		        <div class="container">
-		            <div class="row d-flex justify-content-center">
-		                <div class="menu-content pb-70 col-lg-7">
-		                    <div class="title text-center">
-		                        <h1 class="mb-10">Our Consultant</h1>
-		                    </div>
-		                </div>
-		            </div>
-		            <div class="row justify-content-center d-flex align-items-center">
-		                <div class="col-lg-3 col-md-6 single-team">
-		                    <div class="thumb">
-		                        <img class="img-fluid" src="img/t3.jpg" alt="">
-		                        <div class="align-items-end justify-content-center d-flex">
-									<div class="social-links">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-										<a href="#"><i class="fa fa-twitter"></i></a>
-									</div>			                        	
-		                            <h4>Doctor's name</h4>		                            
-		                        </div>
-		                    </div>
-		                </div>        		                		                
-					</div>
-					<div class="text-center">
-		                        <p>Doctor's description. </p>
-					</div>
-		        </div>
-		    </section>
+	
+	
+
 
 			<!-- start footer Area -->		
 			<footer class="footer-area section-gap">
@@ -242,8 +172,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				</div>
 			</footer>
 			<!-- End footer Area -->
-
-			<!-- <script src="vendor/DataTables/jQuery-3.3.1/jquery-3.3.1.min.js"></script> -->
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
 			<script src="js/popper.min.js"></script>
 			<script src="js/vendor/bootstrap.min.js"></script>			
@@ -259,44 +187,56 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<script src="js/owl.carousel.min.js"></script>									
 			<script src="js/mail-script.js"></script>	
 			<script src="js/main.js"></script>	
-			<script src="js/myjs/actionsAppointment.js"></script>
+			<script src="vendor/DataTables/datatables.min.js"></script>
 			<script src="vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+			<script src="js/myjs/actionsAppointment.js"></script>
 			<script src="js/myjs/actionsLogout.js"></script>
-				<!-- <script type="text/javascript" charset="utf-8" src="cordova.js"></script> -->
-						<script src="js/myjs/actionsChangePass.js"></script>
+			<script src="js/myjs/actionsChangePass.js"></script>
+  		  <!-- <script type="text/javascript" charset="utf-8" src="cordova.js"></script> -->
 			<script type="text/javascript">
-			function my_appointments(){
-							    var url_string = window.location.href;
+				$( document ).ready(function() {
+								var url_string = window.location.href;
 								var url = new URL(url_string);
 								var sId = url.searchParams.get("sId");
 								var aId = url.searchParams.get("aId");
 								var uId = url.searchParams.get("uId");
-						window.location.href =
-						"my-appointments.html?sId=" +
-						sId+
-						"&aId=" +
-						aId+
-						"&uId=" +
-						uId;
 
-					};
-				$( document ).ready(function() {
-					// document.getElementById("logoutBtn").addEventListener("click", () => {
-					// 	alert("fired");
-					// 	logoutme();
-					// });
+
+					//------------------------table here-----------------------------//
 				
+						var table2 = $('#list_of_my_appointments').DataTable( {
+					dom: '<"dt-custom">frtip',
+					pageLength: 5,
+					 language: {
+							search: "",
+							searchPlaceholder: "Search here"
+					 },
+					processing: true,
+					responsive: true,
+					ajax: {
+						url: 'https://docdroid.000webhostapp.com/appointment/listofappointmentsPatientView.php',
+						dataSrc: ''
+						},
+				columns: [ 
+						{ data: 'queue_number', searchable: false },
+						{ data: 'fullname', searchable: true },
+						{ data: 'phone_num', searchable: false },
+						{ data: 'email_address', searchable: false },
+						{ data: 'appointment_date', searchable: true },
+						{ data: 'date_filed', searchable: true },
+						{ data: 'status', searchable: true},
+						{ data: 'message', searchable: false },
+						{ data: 'actions', searchable: false}
 						
-		
-					$("#datepicker2").datepicker({
-						minDate: 0,
-						beforeShowDay: function(date){ return [date.getDay() == 0,""]},
-					});
-
+							],
+							} );
 					
+
+
+
 				});
 					//----------------------------phonegap/cordova-----------------------------
-				//	document.addEventListener("deviceready", onDeviceReady, false); //onDeviceReady is na sa actionsLogout.js
+					document.addEventListener("deviceready", onDeviceReady, false); //onDeviceReady is na sa actionsLogout.js
 					//----------------------------phonegap/cordova-----------------------------
 
 

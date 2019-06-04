@@ -22,8 +22,14 @@ $row = $select->fetch(PDO::FETCH_ASSOC);
 // ITEXMO SEND SMS API - PHP - CURL-LESS METHOD
 // Visit www.itexmo.com/developers.php for more info about this API
 //##########################################################################
+function is_connected()
+{
+    $connected = @fsockopen('https://www.itexmo.com');
+    return $connected;
+}
 function itexmo($number, $message, $apicode)
 {
+
     $url = 'https://www.itexmo.com/php_api/api.php';
     $itexmo = array('1' => $number, '2' => $message, '3' => $apicode);
     $param = array(
@@ -34,18 +40,15 @@ function itexmo($number, $message, $apicode)
         ),
     );
     $context  = stream_context_create($param);
-    return file_get_contents($url, false, $context);
 }
 //##########################################################################
-
-$number = $row['phone_num'];
-$name = $row['f_name']." ".$row['m_name']." ".$row['l_name'];
-$msg = "Hi! ".$row['f_name'];
-//$msg = "Hi! ".$name.", puwede ka ng pumunta sa Gurion's Children Clinic ngayon upang mag-pacheck up! :)";
-$api = "TR-JUNIE212108_XCMIF";
-$text = $name . ":" . $msg;
-
-
+if (is_connected()) {
+    $number = $row['phone_num'];
+    $name = $row['f_name '] . "     " . $row['m_name '] . "     " . $row['l_name'];
+    $msg = "Hi!     " . $row['f_name'];
+    //$msg = "Hi! ".$name.", puwede ka ng pumunta sa Gurion's Children Clinic ngayon upang mag-pacheck up! :)";
+    $api = "TR-JUNIE212108_XCMIF";
+    $text = $name . ":" . $msg;
     $result = itexmo($number, $msg, $api);
     if ($result == "") {
         echo "iTexMo: No response from server!!!
@@ -56,4 +59,6 @@ Please CONTACT US for help. ";
     } else {
         echo "Error Num " . $result . " was encountered!";
     }
-
+} else {
+    echo "Patient is not notified. No Internet Connection or Weak Connection";
+}

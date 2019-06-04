@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+  <head>
+    <!-- Mobile Specific Meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png" />
+    <!-- Author Meta -->
+    <!-- <meta name="author" content="colorlib" /> -->
+    <!-- Meta Description -->
+    <meta name="description" content="" />
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="" />
+    <!-- meta character set -->
+    <meta charset="UTF-8" />
+    <!-- Site Title -->
+    <title>Gurion's Children Clinic</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
+      rel="stylesheet"
+    />
+    <!--
+			CSS
+			============================================= -->
+    <link rel="stylesheet" href="css/linearicons.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/nice-select.css" />
+
+    <!-- <link rel="stylesheet" href="css/jquery-ui.css">			 -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/sweetalert2/dist/sweetalert2.css"
+    />
+  </head>
+  <body onload="onload();">
+    <section class="team-area ">
+      <div class="container" id="printThis">
+        <div class="row d-flex justify-content-center">
+          <div class="menu-content pb-70 col-lg-7">
+            <div class="title text-center">
+              <h1 class="mb-10">Gurion's Children Clinic</h1>
+              <h4>Poblacion West, Asingan, Pangasinan</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center d-flex align-items-center">
+          <div class="col-lg-12 col-md-12">
+            <!-- <p>.</p> -->
+            <pre style="border: 0;" id="letterHere">
+
+            </pre>
+          </div>
+        </div>
+        <!-- <div class="text-center">
+          <p>Doctor's description.</p>
+        </div> -->
+      </div>
+    </section>
+    <!-- <button class="btn btn-primary" onclick="hello();">print</button> -->
+  </body>
+    <!-- <script src="vendor/DataTables/jQuery-3.3.1/jquery-3.3.1.min.js"></script> -->
+    <script src="js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/easing.min.js"></script>
+    <script src="js/hoverIntent.js"></script>
+    <script src="js/superfish.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.tabs.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script type="text/javascript">
+   function onload(){
+       
+     var url_string = window.location.href;
+								var url = new URL(url_string);
+								var stb = url.searchParams.get("stb");
+								var stm = url.searchParams.get("stm");
+                                var stp = url.searchParams.get("stp");
+
+                                var date = url.searchParams.get("date");
+                                if(date ==  null || date == ""){
+                                 today = new Date();
+                                date = `${today.getMonth()+1}/${today.getUTCDate()}/${today.getUTCFullYear()}`;
+                               // date = today;
+                                }
+								var patN = url.searchParams.get("patN");
+                                var docN = url.searchParams.get("docN");
+        var txt = `
+${stb},
+${stm}, ${stp}
+${date}
+
+
+Ma'am/Sir:
+                
+    We humbly refer this patient, ${patN} Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium porro, obcaecati necessitatibus, saepe ullam sunt in nisi est corrupti quaerat officia doloribus iusto dolore cum dolorum quas, perferendis reiciendis quis! Please accept him/her Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, vitae. Exercitationem consequuntur autiusto, eos odio nesciunt voluptatibus nostrum fugiat voluptates necessitatibus ea enim cum non, id cupiditate atque? Amet.
+
+Yours truly,
+
+${docN}`;
+    document.getElementById("letterHere").innerHTML = txt;
+
+        setTimeout(() => {
+          window.print();
+         window.close();
+        }, 250);
+    }
+
+    </script>
+  </body>
+</html>
