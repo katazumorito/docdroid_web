@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 $database = new DbConfig();
 $connect = $database->connect();
-
+//die(json_encode($_POST));
 $data = $_POST["send_data"];
 $get_data = json_decode($data);
 $id = $get_data->id;
@@ -12,7 +12,7 @@ $id = $get_data->id;
 $select = $connect->prepare("SELECT *
 								FROM appointment_tbl
                                 INNER JOIN user_info_tbl
-                                ON  user_info_tbl.user_id = appointment_tbl.user_info_fk
+                                ON user_info_tbl.user_id = appointment_tbl.user_info_fk
                                 WHERE id = '$id'");
 $select->execute();
 
@@ -24,12 +24,15 @@ $row = $select->fetch(PDO::FETCH_ASSOC);
 //##########################################################################
 function is_connected()
 {
-    $connected = @fsockopen('https://www.itexmo.com');
-    return $connected;
+    $connected = fopen("http://www.google.com:80/", "r");
+    if ($connected) {
+        return true;
+    } else {
+        return false;
+    }
 }
 function itexmo($number, $message, $apicode)
 {
-
     $url = 'https://www.itexmo.com/php_api/api.php';
     $itexmo = array('1' => $number, '2' => $message, '3' => $apicode);
     $param = array(
@@ -40,14 +43,17 @@ function itexmo($number, $message, $apicode)
         ),
     );
     $context  = stream_context_create($param);
+    return file_get_contents($url, false, $context);
 }
 //##########################################################################
 if (is_connected()) {
+
     $number = $row['phone_num'];
-    $name = $row['f_name '] . "     " . $row['m_name '] . "     " . $row['l_name'];
-    $msg = "Hi!     " . $row['f_name'];
+    //die(json_encode($row['f_name']));
+    $name = $row['f_name'] . "     " . $row['m_name'] . "     " . $row['l_name'];
+    $msg = "Hi! " . $row['f_name'];
     //$msg = "Hi! ".$name.", puwede ka ng pumunta sa Gurion's Children Clinic ngayon upang mag-pacheck up! :)";
-    $api = "TR-JUNIE212108_XCMIF";
+    $api = "TR-ALJOH790592_K55ZF";
     $text = $name . ":" . $msg;
     $result = itexmo($number, $msg, $api);
     if ($result == "") {
